@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BibliotecaBDD.Models.Prestamo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Registro Préstamos</h1>
+
+<p>
+    <a asp-action="Create">Nuevo Préstamo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaPrestamo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDevolucion)
+            </th>
+            <th>
+                Título del Libro
+            </th>
+            <th>
+                Nombre del Usuario
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPrestamo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDevolucion)
+            </td>
+            <td>
+                    @item.IdLibroNavigation.Titulo
+            </td>
+            <td>
+                    @item.IdUsuarioNavigation.Nombre
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@item.IdPrestamo">Edit</a> |
+                    <a asp-action="Details" class="btn btn-outline-info" asp-route-id="@item.IdPrestamo">Details</a> |
+                    <a asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.IdPrestamo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
