@@ -48,7 +48,16 @@ namespace BibliotecaBDD.Controllers
         // GET: Libroes/Create
         public IActionResult Create()
         {
-            ViewData["IdAutor"] = new SelectList(_context.Autors, "IdAutor", "Nombre","Apellido");
+            // Crear una lista de autores con el nombre completo
+            var autores = _context.Autors
+                .Select(a => new
+                {
+                    IdAutor = a.IdAutor,
+                    NombreCompleto = $"{a.Nombre} {a.Apellido}"
+                })
+                .ToList();
+
+            ViewData["IdAutor"] = new SelectList(autores, "IdAutor", "NombreCompleto");
             ViewData["IdGenero"] = new SelectList(_context.Generos, "IdGenero", "Nombre");
             return View();
         }
@@ -66,8 +75,18 @@ namespace BibliotecaBDD.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAutor"] = new SelectList(_context.Autors, "IdAutor", "IdAutor", libro.IdAutor);
-            ViewData["IdGenero"] = new SelectList(_context.Generos, "IdGenero", "IdGenero", libro.IdGenero);
+
+            // Crear la lista de autores con el nombre completo
+            var autores = _context.Autors
+                .Select(a => new
+                {
+                    IdAutor = a.IdAutor,
+                    NombreCompleto = $"{a.Nombre} {a.Apellido}"
+                })
+                .ToList();
+
+            ViewData["IdAutor"] = new SelectList(autores, "IdAutor", "NombreCompleto", libro.IdAutor);
+            ViewData["IdGenero"] = new SelectList(_context.Generos, "IdGenero", "Nombre", libro.IdGenero);
             return View(libro);
         }
 
@@ -84,8 +103,18 @@ namespace BibliotecaBDD.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdAutor"] = new SelectList(_context.Autors, "IdAutor", "IdAutor", libro.IdAutor);
-            ViewData["IdGenero"] = new SelectList(_context.Generos, "IdGenero", "IdGenero", libro.IdGenero);
+
+            // Crear la lista de autores con el nombre completo
+            var autores = _context.Autors
+                .Select(a => new
+                {
+                    IdAutor = a.IdAutor,
+                    NombreCompleto = $"{a.Nombre} {a.Apellido}"
+                })
+                .ToList();
+
+            ViewData["IdAutor"] = new SelectList(autores, "IdAutor", "NombreCompleto", libro.IdAutor);
+            ViewData["IdGenero"] = new SelectList(_context.Generos, "IdGenero", "Nombre", libro.IdGenero);
             return View(libro);
         }
 
@@ -121,8 +150,18 @@ namespace BibliotecaBDD.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAutor"] = new SelectList(_context.Autors, "IdAutor", "IdAutor", libro.IdAutor);
-            ViewData["IdGenero"] = new SelectList(_context.Generos, "IdGenero", "IdGenero", libro.IdGenero);
+
+            // Crear la lista de autores con el nombre completo
+            var autores = _context.Autors
+                .Select(a => new
+                {
+                    IdAutor = a.IdAutor,
+                    NombreCompleto = $"{a.Nombre} {a.Apellido}"
+                })
+                .ToList();
+
+            ViewData["IdAutor"] = new SelectList(autores, "IdAutor", "NombreCompleto", libro.IdAutor);
+            ViewData["IdGenero"] = new SelectList(_context.Generos, "IdGenero", "Nombre", libro.IdGenero);
             return View(libro);
         }
 

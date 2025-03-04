@@ -10,7 +10,7 @@
 <p>
     <a asp-action="Create">Nuevo Préstamo</a>
 </p>
-<table class="table">
+<table id="myTable" class="table">
     <thead>
         <tr>
             <th>
@@ -41,7 +41,7 @@
                     @item.IdLibroNavigation.Titulo
             </td>
             <td>
-                    @item.IdUsuarioNavigation.Nombre
+                    @item.IdUsuarioNavigation.Nombre  @item.IdUsuarioNavigation.Apellido
             </td>
             <td>
                     <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@item.IdPrestamo">Edit</a> |

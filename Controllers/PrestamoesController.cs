@@ -48,8 +48,17 @@ namespace BibliotecaBDD.Controllers
         // GET: Prestamoes/Create
         public IActionResult Create()
         {
+            // Crear una lista de usuarios con el nombre completo
+            var usuarios = _context.Usuarios
+                .Select(a => new
+                {
+                    IdUsuario = a.IdUsuario,
+                    NombreCompletoUsu = $"{a.Nombre} {a.Apellido}"
+                })
+                .ToList();
+
             ViewData["IdLibro"] = new SelectList(_context.Libros, "IdLibro", "Titulo");
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre");
+            ViewData["IdUsuario"] = new SelectList(usuarios, "IdUsuario", "NombreCompletoUsu"); // Usar la lista proyectada
             return View();
         }
 
@@ -66,8 +75,18 @@ namespace BibliotecaBDD.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // Crear la lista de usuarios con el nombre completo
+            var usuarios = _context.Usuarios
+                .Select(a => new
+                {
+                    IdUsuario = a.IdUsuario,
+                    NombreCompletoUsu = $"{a.Nombre} {a.Apellido}"
+                })
+                .ToList();
+
             ViewData["IdLibro"] = new SelectList(_context.Libros, "IdLibro", "IdLibro", prestamo.IdLibro);
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", prestamo.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(usuarios, "IdUsuario", "NombreCompletoUsu", prestamo.IdUsuario); // Usar la lista proyectada
             return View(prestamo);
         }
 
@@ -84,8 +103,18 @@ namespace BibliotecaBDD.Controllers
             {
                 return NotFound();
             }
+
+            // Crear la lista de usuarios con el nombre completo
+            var usuarios = _context.Usuarios
+                .Select(a => new
+                {
+                    IdUsuario = a.IdUsuario,
+                    NombreCompletoUsu = $"{a.Nombre} {a.Apellido}"
+                })
+                .ToList();
+
             ViewData["IdLibro"] = new SelectList(_context.Libros, "IdLibro", "Titulo", prestamo.IdLibro);
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre", prestamo.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(usuarios, "IdUsuario", "NombreCompletoUsu", prestamo.IdUsuario); // Usar la lista proyectada
             return View(prestamo);
         }
 
@@ -121,8 +150,18 @@ namespace BibliotecaBDD.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            // Crear la lista de usuarios con el nombre completo
+            var usuarios = _context.Usuarios
+                .Select(a => new
+                {
+                    IdUsuario = a.IdUsuario,
+                    NombreCompletoUsu = $"{a.Nombre} {a.Apellido}"
+                })
+                .ToList();
+
             ViewData["IdLibro"] = new SelectList(_context.Libros, "IdLibro", "IdLibro", prestamo.IdLibro);
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", prestamo.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(usuarios, "IdUsuario", "NombreCompletoUsu", prestamo.IdUsuario); // Usar la lista proyectada
             return View(prestamo);
         }
 

@@ -327,3 +327,4 @@ C:\Users\Fernando\source\repos\BibliotecaBDD\obj\Debug\net9.0\refint\BibliotecaB
 C:\Users\Fernando\source\repos\BibliotecaBDD\obj\Debug\net9.0\BibliotecaBDD.pdb
 C:\Users\Fernando\source\repos\BibliotecaBDD\obj\Debug\net9.0\BibliotecaBDD.genruntimeconfig.cache
 C:\Users\Fernando\source\repos\BibliotecaBDD\obj\Debug\net9.0\ref\BibliotecaBDD.dll
+C:\Users\Fernando\source\repos\BibliotecaBDD\obj\Debug\net9.0\BibliotecaBDD.sourcelink.json

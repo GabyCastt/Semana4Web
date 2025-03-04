@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BibliotecaBDD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f64c47ed6b11e78810e7a5f01369870a6af8552")]
 [assembly: System.Reflection.AssemblyProductAttribute("BibliotecaBDD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BibliotecaBDD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
